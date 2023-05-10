@@ -32,7 +32,48 @@ export default function Login({ navigation }) {
       <View style={styles.whiteSheet}></View>
       <SafeAreaView style={styles.form}>
         <Text style={styles.title}>Login</Text>
-        <Text style={styles.title}>Password</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter email"
+          autoCapitalize="none"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          autoFocus={true}
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        ></TextInput>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter password"
+          autoCapitalize="none"
+          autoCorrect={false}
+          sourceTextEntry={true}
+          textContentType="password"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+        ></TextInput>
+        <TouchableOpacity style={styles.button} onPress={onHandleLogin}>
+          <Text style={{ fontWeight: "bold", color: "#fff", fontSize: 18 }}>
+            Login
+          </Text>
+        </TouchableOpacity>
+        <View
+          style={{
+            marginTop: 20,
+            flexDirection: "row",
+            alignItems: "center",
+            alignSelf: "center",
+          }}
+        >
+          <Text style={{ color: "gray", fontWeight: "600", fontSize: 14 }}>
+            Don't have an account?{" "}
+          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
+            <Text style={{ color: "#f57c00", fontWeight: "600", fontSize: 14 }}>
+              Sign Up
+            </Text>
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -48,7 +89,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "orange",
     alignSelf: "center",
-    paddingBottom: 24,
+    paddingBottom: 10,
   },
   input: {
     backgroundColor: "#F6F7FB",
