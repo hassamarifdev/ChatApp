@@ -3,6 +3,7 @@ import { View, ActivityIndicator } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./config/firebase";
 
 import Chat from "./screens/Chat";
 import Login from "./screens/Login";
@@ -40,8 +41,8 @@ function AuthStack() {
 }
 
 function RootNavigator() {
-  const [user, setUser] = useContext(AuthenticatedUserContext);
-  const [loading, setLoading] = useState(ture);
+  const { user, setUser } = useContext(AuthenticatedUserContext);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (authenticatedUser) => {
       authenticatedUser ? setUser(authenticatedUser) : setUser(null);
