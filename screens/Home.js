@@ -5,7 +5,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import colors from "../colors";
 import { Entypo } from "@expo/vector-icons";
 const catImageUrl =
-  "https://images.unsplash.com/photo-1608848461950-0fe51dfc41cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60";
+  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80";
 
 const Home = () => {
   const navigation = useNavigation();
@@ -25,6 +25,7 @@ const Home = () => {
           style={{
             width: 40,
             height: 40,
+            borderRadius: 50,
             marginRight: 15,
           }}
         />
@@ -37,7 +38,7 @@ const Home = () => {
         onPress={() => navigation.navigate("Chat")}
         style={styles.chatButton}
       >
-        <Entypo name="chat" size={24} color={colors.LightGray} />
+        <Entypo name="chat" size={24} color={colors.lightGray} />
       </TouchableOpacity>
     </View>
   );
