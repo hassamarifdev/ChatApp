@@ -49,14 +49,14 @@ export default function Chat() {
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       console.log("snapshot", snapshot);
-      setMessages(
-        snapshot.docs.map((doc) => ({
-          _id: doc.id,
-          createdAt: doc.data().createdAt,
-          text: doc.date().text,
-          user: doc.date().user,
-        }))
-      );
+      // setMessages(
+      //   snapshot.docs.map((doc) => ({
+      //     _id: doc.id,
+      //     createdAt: doc.data().createdAt,
+      //     text: doc.date().text,
+      //     user: doc.date().user,
+      //   }))
+      // );
     });
     return () => unsubscribe();
   }, []);
