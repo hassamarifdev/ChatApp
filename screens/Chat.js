@@ -48,33 +48,25 @@ export default function Chat() {
     const q = query(collectionRef, orderBy("createdAt", "desc"));
 
     const unsubscribe = onSnapshot(q, snapshot => {
-      console.log("snapshot");
+      console.log("snapshot ======>>>>>");
+      // // var arr =   snapshot.docs.map(doc => ({
+      // //       _id: doc.id,
+      // //       createdAt: doc.data().createdAt,
+      // //       text: doc.data().text,
+      // //       user: doc.data().user,
+      // //     }))
+      //     snapshot.docs.map((doc)=>console.log(doc.data().text))
       setMessages(
         snapshot.docs.map(doc => ({
           _id: doc.id,
-          createdAt: doc.data().createdAt,
-          text: doc.date().text,
-          user: doc.date().user,
+          createdAt: doc.data().createdAt.toDate(),
+          text: doc.data().text,
+          user: doc.data().user,
         }))
       );
     });
     return () => unsubscribe();
   }, []);
-
-  // useEffect(() => {
-  //   setMessages([
-  //     {
-  //       _id: 1,
-  //       text: "Hello developer",
-  //       createdAt: new Date(),
-  //       user: {
-  //         _id: 2,
-  //         name: "React Native",
-  //         avatar: "https://placeimg.com/140/140/any",
-  //       },
-  //     },
-  //   ]);
-  // }, []);
 
   const onSend = useCallback((messages = []) => {
     setMessages((previousMessages) =>
