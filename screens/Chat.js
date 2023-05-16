@@ -4,7 +4,7 @@ import React, {
   useCallback,
   useEffect,
 } from "react";
-import { TouchAbleOpaci } from "react-native";
+// import { TouchAbleOpacity } from "react-native";
 import { GiftedChat } from "react-native-gifted-chat";
 import {
   collection,
@@ -47,16 +47,16 @@ export default function Chat() {
     const collectionRef = collection(database, "chat");
     const q = query(collectionRef, orderBy("createdAt", "desc"));
 
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      console.log("snapshot", snapshot);
-      // setMessages(
-      //   snapshot.docs.map((doc) => ({
-      //     _id: doc.id,
-      //     createdAt: doc.data().createdAt,
-      //     text: doc.date().text,
-      //     user: doc.date().user,
-      //   }))
-      // );
+    const unsubscribe = onSnapshot(q, snapshot => {
+      console.log("snapshot");
+      setMessages(
+        snapshot.docs.map(doc => ({
+          _id: doc.id,
+          createdAt: doc.data().createdAt,
+          text: doc.date().text,
+          user: doc.date().user,
+        }))
+      );
     });
     return () => unsubscribe();
   }, []);
